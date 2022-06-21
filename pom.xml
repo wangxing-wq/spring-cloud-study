@@ -19,7 +19,7 @@
         <junit.version>4.12</junit.version>
         <log4j.version>1.2.17</log4j.version>
         <lombok.version>1.18.22</lombok.version>
-        <mysql.version>5.1.30</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <druid.version>1.1.17</druid.version>
         <mybatis.spring.boot.version>2.1.2</mybatis.spring.boot.version>
     </properties>
@@ -83,4 +83,18 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <addResources>true</addResources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
