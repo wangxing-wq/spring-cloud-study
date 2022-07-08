@@ -2,7 +2,6 @@ package com.wx.controller;
 
 import com.wx.entity.CommonResult;
 import com.wx.entity.Payment;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -12,13 +11,12 @@ import org.springframework.web.client.RestTemplate;
  * @date 2022/6/22 17:16
  * @message
  */
-@Slf4j
 @RestController
 @RequestMapping("consumer")
 public class OrderController {
 
 	private final RestTemplate restTemplate;
-	private final String PAYMENT_URL = "http://localhost:8001/payment";
+	private final String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVICE/payment";
 
 	public OrderController(RestTemplate restTemplate){
 		this.restTemplate = restTemplate;

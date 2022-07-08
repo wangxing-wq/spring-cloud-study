@@ -4,7 +4,6 @@ import com.wx.entity.CommonResult;
 import com.wx.entity.Payment;
 import com.wx.service.PaymentService;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -19,16 +18,13 @@ public class PaymentController {
 
 	private final PaymentService paymentService;
 
-	private final DiscoveryClient discoveryClient;
+	public PaymentController(PaymentService paymentService) {
+		this.paymentService = paymentService;
+	}
+
 
 	@Value("${server.port}")
 	private String port;
-
-
-	public PaymentController(PaymentService paymentService,DiscoveryClient discoveryClient) {
-		this.paymentService = paymentService;
-		this.discoveryClient = discoveryClient;
-	}
 
 	@PostMapping("create")
 	public CommonResult<Payment> create(@RequestBody Payment payment){
@@ -43,14 +39,15 @@ public class PaymentController {
 	public CommonResult<Payment> get(@PathVariable Long id){
 		Payment paymentById = paymentService.findPaymentById(id);
 		if (paymentById == null){
-			return new CommonResult<>(444, "查询失败,id : " + id  + port);
+			return new CommonResult<>(444, "查询失败,id : " + id + port);
 		}
 		return new CommonResult<>(200, "查询成功" + port, paymentById);
 	}
 
 	@GetMapping("info")
 	public CommonResult<String> info(){
-		return new CommonResult<>(200, "查询成功", port);
+		return new CommonResult<>(200, "查询成功" + port, port);
 	}
+
 
 }

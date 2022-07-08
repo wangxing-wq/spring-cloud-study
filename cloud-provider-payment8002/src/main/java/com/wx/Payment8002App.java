@@ -3,7 +3,6 @@ package com.wx;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
@@ -14,12 +13,11 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  */
 @MapperScan("com.wx.dao")
 @EnableEurekaClient
-@EnableDiscoveryClient
 @SpringBootApplication
-public class Payment8001App {
+public class Payment8002App {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Payment8001App.class,args);
+		SpringApplication.run(Payment8002App.class,args);
 	}
 
 }
